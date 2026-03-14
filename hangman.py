@@ -30,3 +30,21 @@ display = []
 for _ in range(word_length):
     display.append("_")
 print(display)
+game_over = False
+while not game_over:
+    guess = input("Guess a Letter: ").lower()
+
+    if guess in chosen_word:
+        for position in range(word_length):
+            if chosen_word[position] == guess:
+                display[position] = guess
+    else:
+        lives -= 1
+        print(f"Wrong Lives Remaining :{lives}")
+        print(display)
+        if "_" not in display:
+            print("You Win!")
+            game_over = True
+        if lives == 0:
+          print(f"You Lose! The Word was : {chosen_word}")
+          game_over = True
